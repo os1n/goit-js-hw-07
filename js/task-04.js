@@ -24,11 +24,6 @@ counterVals.counterRef.addEventListener("click", (event) => {
   if (event.target.dataset.action === "increment") increment(); else decrement();
 });
 
-function targetChange(value, callback) {
-  counterValue = callback(value);
-  counterVals.counterValueRef.textContent = value;
-}
-
 function increment() {
   counterValue += 1;
   counterVals.counterValueRef.textContent = counterValue;
