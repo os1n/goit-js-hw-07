@@ -13,26 +13,30 @@ console.log("HW 07 Task 06");
 //     Если введено подходящее количество, то border инпута становится зеленым, если неправильное - красным.
 
 const inputRef = document.querySelector("#validation-input");
+//const inputLength = document.querySelector('button[data-length=');
 
 // console.dir(inputRef);
 // console.dir(dataLengthRef);
 //
 // ==-- Add validation class
-inputRef.classList.add("validation-input");
 
 inputRef.addEventListener("change", () => {
   //console.log(inputRef.value.length);
   //console.log("Attributes =", inputRef.classList);
 
-  // ==-- check if 0
-  if (inputRef.value.length === 0) {
-    inputRef.classList.remove("invalid", "valid"); // clear validity
-  } else {
-    inputRef.classList.add("invalid"); // invalid then check for validity
-  }
+  inputRef.classList.add("validation-input", "valid", "invalid"); // invalid by default
 
-  if (inputRef.value.length === parseInt(inputRef.attributes[3].value)) {
-    // console.log("mark green");
-    inputRef.classList.replace("invalid", "valid");
+  //console.log([...inputRef.attributes]);
+  const inputLentgh = [...inputRef.attributes].find(
+    (attribute) => attribute.name === "data-length"
+  ).value;
+  //console.log(inputLentgh);
+  
+  if (inputRef.value.length === parseInt(inputLentgh)) {
+    inputRef.classList.replace("invalid", "valid"); // invalid replace with valid
+  } else {
+    inputRef.classList.replace("valid", "invalid");
   }
 });
+
+

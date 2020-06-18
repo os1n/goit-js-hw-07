@@ -21,20 +21,20 @@ let counterValue = 0;
 
 counterVals.counterRef.addEventListener("click", (event) => {
   console.log("counter =", counterValue);
-  if (event.target.dataset.action === "increment") {
-    counterValue = increment(counterValue);
-    counterVals.counterValueRef.textContent = counterValue;
-  }
-  if (event.target.dataset.action === "decrement") {
-    counterValue = decrement(counterValue);
-    counterVals.counterValueRef.textContent = counterValue;
-  }
+  if (event.target.dataset.action === "increment") increment(); else decrement();
 });
 
-function increment(counter) {
-  return (counter += 1);
+function targetChange(value, callback) {
+  counterValue = callback(value);
+  counterVals.counterValueRef.textContent = value;
 }
 
-const decrement = function (counter) {
-  return (counter -= 1);
+function increment() {
+  counterValue += 1;
+  counterVals.counterValueRef.textContent = counterValue;
+}
+
+const decrement = function () {
+  counterValue -= 1;
+  counterVals.counterValueRef.textContent = counterValue;
 };

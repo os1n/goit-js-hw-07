@@ -24,10 +24,34 @@ console.log("! UNDER CONSTRUCTION !");
 
 const vars = {
     controlsRef: document.querySelector('#controls'),
-
+    inputRef: document.querySelector('input'),
+    renderBtnRef: document.querySelector('button[data-action="render"'),
+    destroyBtnRef: document.querySelector('button[data-action="destroy"'),
+    amount: 10,
 }
 
+//const controlsRef = document.querySelector('#controls');
 
-//createBoxes(amount) // которая принимает 1 параметр amount - число. Функция создает столько div, сколько указано в amount и добавляет их в div#boxes.
+console.dir(vars.controlsRef);
+console.dir(vars.inputRef);
+console.log(vars.destroyBtnRef);
 
-//destroyBoxes() // очищает div#boxes.
+vars.renderBtnRef.addEventListener('click', createBoxes);
+vars.destroyBtnRef.addEventListener('click', destroyBoxes);
+vars.inputRef.addEventListener('input', inputHandler());
+
+console.log(vars.controlsRef);
+
+function inputHandler(event) {
+    console.log(vars.amount);
+}
+
+function createBoxes(event) {
+    vars.amount = vars.inputRef.input;
+    console.dir(vars.inputRef.value);
+}
+// которая принимает 1 параметр amount - число. Функция создает столько div, сколько указано в amount и добавляет их в div#boxes.
+
+function destroyBoxes(event) {
+    console.log(event);
+} // очищает div#boxes.

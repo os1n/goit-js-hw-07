@@ -25,11 +25,13 @@ const listRef = document.querySelector("#ingredients");
 // );
 
 const insertItems = function (list) {
+  const newList = [];
   list.forEach((element) => {
     // console.log(element);
     const li = document.createElement("li");
     li.textContent = element;
-    listRef.append(li);
+    newList.push(li);
   });
+  listRef.append(...newList);
 };
 insertItems(ingredients);
